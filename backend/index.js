@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from'mongoose';
 
-import { registerValidator, loginValidator,  todoValidator  } from './validations/index.js';
+import { registerValidator, loginValidator  } from './validations/index.js';
+import  todoValidator from './validations/todo.js'
 
 import checkIsAuth from './utils/checkIsAuth.js'
 
@@ -38,6 +39,13 @@ app.get('/todo/:id', todoValidator, TodoController.getOne);
 app.post('/todo', checkIsAuth , todoValidator,  TodoController.create);
 app.delete('/todo/:id', checkIsAuth, TodoController.remove);
 app.patch('/todo/:id', checkIsAuth, TodoController.update);
+
+app.post('/r',(req, res)=>{
+    console.log(req.body);
+    res.json({
+        success: true,
+    })
+})
 
 
 

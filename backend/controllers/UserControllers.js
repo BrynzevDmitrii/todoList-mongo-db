@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { validationResult } from 'express-validator';
 
-import modelUser  from '../models/index.js';
+import modelUser  from '../models/User.js';
 
 
 
@@ -18,7 +18,7 @@ export const register = async (req, res)=>{
      const salt = await bcrypt.genSalt(10)
      const hash = await bcrypt.hash(pswd, salt)
  
-     const doc = new modelUser({
+     const doc =  new modelUser({
          email: req.body.email,
          fullName: req.body.fullName,
          avatarUrl: req.body.avatarUrl,
@@ -45,7 +45,7 @@ export const register = async (req, res)=>{
      }
      catch(err){
          console.log(err);
-         res.status(500).json({
+         res.status(400).json({
              messege:"Не удалось зарегестрировать пользователя"
          })
      }};
