@@ -2,22 +2,22 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import SimpleMDE from 'react-simplemde-editor';
+import { Modal, Box } from '@mui/material';
 
 import 'easymde/dist/easymde.min.css';
 import styles from './AddList.module.scss';
 
-export const AddList = () => {
+export const AddList = ({openPopup, closedPopup}) => {
   const imageUrl = '';
   const [value, setValue] = React.useState('');
 
   const handleChangeFile = () => {};
-
   const onClickRemoveImage = () => {};
-
   const onChange = React.useCallback((value) => {
     setValue(value);
   }, []);
+
+
 
   const options = React.useMemo(
     () => ({
@@ -35,37 +35,58 @@ export const AddList = () => {
   );
 
   return (
+<>
+    
+    <Modal
+  open={openPopup}
+>
+<Box
+      className={styles['moduleWindow']}
+    >
     <Paper style={{ padding: 30 }}>
-      <Button variant="outlined" size="large">
-        Загрузить превью
-      </Button>
       <input type="file" onChange={handleChangeFile} hidden />
       {imageUrl && (
         <Button variant="contained" color="error" onClick={onClickRemoveImage}>
           Удалить
         </Button>
       )}
-      {imageUrl && (
-        <img className={styles.image} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
-      )}
       <br />
       <br />
       <TextField
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Заголовок статьи..."
+        placeholder="Заголовок списка дел..."
         fullWidth
       />
-      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Тэги" fullWidth />
-      <SimpleMDE className={styles.editor} value={value} onChange={onChange} options={options} />
+      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Мой новый список." fullWidth />
+      <br />
+      <br />
+      <TextField
+          id="filled-textarea"
+          label="Multiline Placeholder"
+          placeholder="Placeholder"
+          multiline
+          variant="filled"
+          fullWidth
+        />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      
       <div className={styles.buttons}>
         <Button size="large" variant="contained">
           Опубликовать
         </Button>
-        <a href="/">
-          <Button size="large">Отмена</Button>
-        </a>
+          <Button size="large" onClick={()=>closedPopup()}>
+              Отмена
+              </Button>
       </div>
     </Paper>
+    </Box>
+    </Modal>
+    </>
   );
 };

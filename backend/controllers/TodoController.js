@@ -1,4 +1,4 @@
-import Todo from "../models/index.js";
+import Todo from "../models/Todo.js";
 
 export const getAll = async(req, res)=> {
     try {
@@ -38,8 +38,9 @@ export const create = async(req, res)=>{
     try {
         const doc = new Todo({
             title: req.body.title,
-            shortDescription: req.body.shortDescription,
-            fullDescription: req.body.fullDescription,
+            todo: req.body.todo,
+            items:req.body.items,
+            isChecket: req.body.isChecket,
             user:req.userId
         });
 

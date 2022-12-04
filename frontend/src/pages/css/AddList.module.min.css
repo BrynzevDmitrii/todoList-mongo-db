@@ -1,0 +1,43 @@
+.title input {
+  font-size: 42px;
+  font-weight: 900;
+}
+.title div:before, .title div:after {
+  display: none;
+}
+
+.image {
+  width: 100%;
+}
+
+.tags {
+  margin: 15px 0;
+}
+
+.editor {
+  margin: 30px -30px;
+}
+.editor :global .cm-s-easymde {
+  border: 0;
+  font-size: 22px;
+}
+.editor :global .editor-toolbar {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.buttons {
+  display: flex;
+}
+.buttons button {
+  margin-right: 15px;
+}
+
+.moduleWindow {
+  width: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(122, 108, 108);
+}/*# sourceMappingURL=AddList.module.min.css.map */
