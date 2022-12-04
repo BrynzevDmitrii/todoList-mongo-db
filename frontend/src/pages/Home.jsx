@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Grid from '@mui/material/Grid';
 
 import { List } from '../components/List';
+import { Button } from '@mui/material';
+import { AddList } from './AddList';
 
 export const Home = () => {
+  
+ const [addList, setAddList] = useState(false);
+
+  const createList=()=>{
+    setAddList(true)
+  }
+
+  const closedPopup=(closed)=>{
+    setAddList(false);
+  }
   return (
     <>
+    <Button variant="contained" onClick={()=>createList()}>Создать новый список</Button>
+     {addList && <AddList openPopup={createList} closedPopup = {closedPopup}/>}
       <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
       </Tabs>
       <Grid container spacing={2}>
@@ -23,11 +37,12 @@ export const Home = () => {
               }}
               createdAt={'3 декабря 2022 г.'}
               commentsCount={3}
-              tags={['react', 'fun', 'typescript']}
               isEditable
             />
           ))}
         </Grid>
+
+       
       </Grid>
     </>
   );

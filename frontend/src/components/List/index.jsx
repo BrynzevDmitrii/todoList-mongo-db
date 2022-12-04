@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import styles from './List.module.scss';
 import { PostSkeleton } from './Skeleton';
+import { Link } from 'react-router-dom';
 
 export const List = ({
   _id,
@@ -31,11 +32,11 @@ export const List = ({
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (
         <div className={styles.editButtons}>
-          <a href={`/posts/${_id}/edit`}>
+          <Link to={`/todo/${_id}/edit`}>
             <IconButton color="primary">
               <EditIcon />
             </IconButton>
-          </a>
+          </Link>
           <IconButton onClick={onClickRemove} color="secondary">
             <DeleteIcon />
           </IconButton>
@@ -48,20 +49,6 @@ export const List = ({
           alt={title}
         />
       )}
-      <div className={styles.wrapper}>
-        <div className={styles.indention}>
-          <h2 className={clsx(styles.title, { [styles.titleFull]: isFullPost })}>
-            {isFullPost ? title : <a href={`/posts/${_id}`}>{title}</a>}
-          </h2>
-          <ul className={styles.tags}>
-            {tags.map((name) => (
-              <li key={name}>
-                <a href={`/tag/${name}`}>#{name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
     </div>
   );
 };
