@@ -1,19 +1,15 @@
-import { makeAutoObservable } from "mobx";
 
-class addNewList{
-    statePopup = false;
-    constructor(){
-        makeAutoObservable(this)
-    }
+import axios  from "../axios";
+import observable from 'mobx'
 
-    openPopup(){
-        this.statePopup = true;
-    }
+class allList{
+    @observable  data = [];
 
-    closedPopup(){
-        this.statePopup = false;
-    }
 
+   async fetchLists(){
+     axios.get('/todo')
+        .then(response =>this.data.push(response.data))    
+   }
 }
 
-export default new addNewList();
+export default new allList();

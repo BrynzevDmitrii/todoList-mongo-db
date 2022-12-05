@@ -89,4 +89,4 @@ export const AddList = ({openPopup, closedPopup}) => {
     </Modal>
     </>
   );
-};
+}
