@@ -5,19 +5,17 @@ const TodoSchema = new mongoose.Schema({
         required: true,
     }, 
 
-    todo:{
-        items : {
+    
+    items : {
             type: mongoose.Schema.Types.Array,
             ref: 'Item',
             required: true,
         }, 
-        isChecket :{
+    isChecket :{
             type: mongoose.Schema.Types.Boolean,
             ref: 'Item',
             required: true,
-        }
-            
-    },
+        },
 
     user: {
         type: mongoose.Schema.Types.ObjectId,

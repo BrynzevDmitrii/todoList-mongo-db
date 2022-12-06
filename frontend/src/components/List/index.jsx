@@ -7,8 +7,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import styles from './List.module.scss';
 import { PostSkeleton } from './Skeleton';
 import { Link } from 'react-router-dom';
+import { Box } from '@mui/material';
+import { observer } from 'mobx-react';
 
-export const List = ({
+export const List = observer(({
   _id,
   title,
   createdAt,
@@ -37,18 +39,23 @@ export const List = ({
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton onClick={onClickRemove} color="secondary">
+          <IconButton  onClick={onClickRemove} color="secondary">
             <DeleteIcon />
           </IconButton>
         </div>
       )}
-      {imageUrl && (
+      {
+        <Box>
+          title = {title}
+        </Box>
+      }
+      {/* {imageUrl && (
         <img
           className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
           src={imageUrl}
           alt={title}
         />
-      )}
+      )} */}
     </div>
   );
-};
+});

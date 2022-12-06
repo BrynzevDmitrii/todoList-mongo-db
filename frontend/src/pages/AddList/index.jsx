@@ -9,30 +9,30 @@ import styles from './AddList.module.scss';
 
 export const AddList = ({openPopup, closedPopup}) => {
   const imageUrl = '';
-  const [value, setValue] = React.useState('');
+  // const [value, setValue] = React.useState('');
 
   const handleChangeFile = () => {};
   const onClickRemoveImage = () => {};
-  const onChange = React.useCallback((value) => {
-    setValue(value);
-  }, []);
+  // const onChange = React.useCallback((value) => {
+  //   setValue(value);
+  // }, []);
 
 
 
-  const options = React.useMemo(
-    () => ({
-      spellChecker: false,
-      maxHeight: '400px',
-      autofocus: true,
-      placeholder: 'Введите текст...',
-      status: false,
-      autosave: {
-        enabled: true,
-        delay: 1000,
-      },
-    }),
-    [],
-  );
+  // const options = React.useMemo(
+  //   () => ({
+  //     spellChecker: false,
+  //     maxHeight: '400px',
+  //     autofocus: true,
+  //     placeholder: 'Введите текст...',
+  //     status: false,
+  //     autosave: {
+  //       enabled: true,
+  //       delay: 1000,
+  //     },
+  //   }),
+  //   [],
+  // );
 
   return (
 <>
@@ -89,4 +89,4 @@ export const AddList = ({openPopup, closedPopup}) => {
     </Modal>
     </>
   );
-};
+}

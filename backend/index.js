@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from'mongoose';
+import cors from 'cors'
 
 import { registerValidator, loginValidator  } from './validations/index.js';
 import  todoValidator from './validations/todo.js'
@@ -22,8 +23,7 @@ const app = express();
 
 
 app.use(express.json());
-
-
+app.use(cors());
 app.get('/', (req, res)=>{
     res.send('hello')
 })
@@ -39,14 +39,6 @@ app.get('/todo/:id', todoValidator, TodoController.getOne);
 app.post('/todo', checkIsAuth , todoValidator,  TodoController.create);
 app.delete('/todo/:id', checkIsAuth, TodoController.remove);
 app.patch('/todo/:id', checkIsAuth, TodoController.update);
-
-app.post('/r',(req, res)=>{
-    console.log(req.body);
-    res.json({
-        success: true,
-    })
-})
-
 
 
 

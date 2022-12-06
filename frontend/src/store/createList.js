@@ -1,19 +1,32 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
+import axios  from "../axios";
 
-class addNewList{
-    statePopup = false;
+class createList{
+    title = '' ;
+    items = [];
+    isChecket = false
+
+
     constructor(){
         makeAutoObservable(this)
     }
 
-    openPopup(){
-        this.statePopup = true;
+    setTitle(inputTitle) {
+        this.title = inputTitle;
     }
 
-    closedPopup(){
-        this.statePopup = false;
+    setItems(inputItems) {
+        this.items.push(inputItems);
     }
 
+    setIsChecket(inputChecket) {
+        this.isChecket = inputChecket;
+    }
+
+   async axiosCreateLists(){
+     axios.get('/todo')
+        .then(response =>this.setDate(response.data))    
+   }
 }
 
-export default new addNewList();
+export default observable( new createList());
