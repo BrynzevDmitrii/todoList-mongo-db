@@ -6,10 +6,10 @@ import Grid from '@mui/material/Grid';
 import { List } from '../components/List';
 import { Button } from '@mui/material';
 import { AddList } from './AddList';
-import allList from '../store/createList'
+import allList from '../store/allList'
 import { observer } from 'mobx-react';
 
-export const Home = () => {
+export const Home = observer(() => {
   
  const [addList, setAddList] = useState(false);
 
@@ -24,6 +24,8 @@ export const Home = () => {
   const closedPopup=()=>{
     setAddList(false);
   }
+
+  
   return (
     <>
     <Button variant="contained" onClick={()=>createList()}>Создать новый список</Button>
@@ -32,10 +34,10 @@ export const Home = () => {
       </Tabs>
       <Grid container spacing={2}>
         <Grid xs={8} item>
-          
-          {allList.data.map((item) => (
+          {allList.data.map((item) =>
             <List
-              id={item._id}
+              key = {item._id}
+              // id={item._id}
               title={item.title}
               imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
               user={{
@@ -48,10 +50,9 @@ export const Home = () => {
               isEditable
             />
            )
-          )
         }
         </Grid>
       </Grid>
     </>
   );
-};
+});

@@ -38,7 +38,6 @@ export const create = async(req, res)=>{
     try {
         const doc = new Todo({
             title: req.body.title,
-            todo: req.body.todo,
             items:req.body.items,
             isChecket: req.body.isChecket,
             user:req.userId
