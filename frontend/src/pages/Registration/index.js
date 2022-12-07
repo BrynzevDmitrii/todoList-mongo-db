@@ -6,8 +6,29 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 
 import styles from './Registration.module.scss';
+import { observer } from 'mobx-react';
 
-export const Registration = () => {
+import {useForm} from 'react-hook-form'
+import Register from '../../store/register'
+
+
+export const Registration = observer(() => {
+
+ const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
+    defaultValues:{
+      fullName:'',
+      email: '',
+      password:''
+    },
+    mode: "onChange",
+ })
+
+  const submit=(values)=>{
+    Register.fetchRegister(values)
+  }
+
+  console.log(errors, isValid);
+
   return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
@@ -16,12 +37,41 @@ export const Registration = () => {
       <div className={styles.avatar}>
         <Avatar sx={{ width: 100, height: 100 }} />
       </div>
-      <TextField className={styles.field} label="Полное имя" fullWidth />
-      <TextField className={styles.field} label="E-Mail" fullWidth />
-      <TextField className={styles.field} label="Пароль" fullWidth />
-      <Button size="large" variant="contained" fullWidth>
+      <form onSubmit={handleSubmit(submit)}>
+      <TextField 
+      {...register('fullName', {required: 'Введите Ваше имя'})} 
+      className={styles.field} 
+      error = {Boolean(errors.fullName?.message)}
+      label="Полное имя" 
+      fullWidth />
+
+      <TextField 
+      {...register('email', {required: 'Введите Вашу почту'})}
+      type={'email'} 
+      className={styles.field} 
+      helperText = {errors.email?.message}
+      error = {Boolean(errors.email?.message)}
+      label="E-Mail" 
+      fullWidth />
+
+      <TextField 
+      {...register('password', {required: 'Введите пароль'})}
+      type={'password'}
+      className={styles.field}
+      helperText = {errors.password?.message} 
+      error = {Boolean(errors.password?.message)}
+      label="Пароль" 
+      fullWidth />
+
+      <Button 
+      disabled = {!isValid}
+       type="submit"
+       size="large" 
+       variant="contained" 
+       fullWidth>
         Зарегистрироваться
       </Button>
+      </form>
     </Paper>
   );
-};
+});
