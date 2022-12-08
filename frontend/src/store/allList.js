@@ -15,7 +15,7 @@ class allList{
     }
 
    async fetchLists(){
-     axios.get('/todo')
+     await axios.get('/todo')
         .then(response =>this.setDate(response.data))    
    }
 }

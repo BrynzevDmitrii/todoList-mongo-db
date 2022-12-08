@@ -4,11 +4,17 @@ import Button from '@mui/material/Button';
 import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
+import register from '../../store/register';
+import { observer } from 'mobx-react';
 
-export const Header = () => {
-  const isAuth = false;
 
-  const onClickLogout = () => {};
+export const Header = observer(() => {
+  const isAuth = register.registerData.length
+
+
+  const onClickLogout = () => {
+   register.setLoguot();
+  };
 
   return (
     <div className={styles.root}>
@@ -23,7 +29,7 @@ export const Header = () => {
                 <Link to ="/posts/create">
                   <Button variant="contained">Написать статью</Button>
                 </Link>
-                <Button onClick={onClickLogout} variant="contained" color="error">
+                <Button onClick={()=>onClickLogout()} variant="contained" color="error">
                   Выйти
                 </Button>
               </>
@@ -42,4 +48,4 @@ export const Header = () => {
       </Container>
     </div>
   );
-};
+});

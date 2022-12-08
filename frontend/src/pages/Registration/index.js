@@ -10,9 +10,13 @@ import { observer } from 'mobx-react';
 
 import {useForm} from 'react-hook-form'
 import Register from '../../store/register'
+import { Navigate } from 'react-router-dom';
+
 
 
 export const Registration = observer(() => {
+
+  let isAuth = Register.registerData.length;
 
  const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
     defaultValues:{
@@ -25,11 +29,17 @@ export const Registration = observer(() => {
 
   const submit=(values)=>{
     Register.fetchRegister(values)
+    if(Register.registerData){
+      const token = Register.registerData.token;
+      window.localStorage.setItem('token', token)
+    }
+    console.log(Register.registerData);
   }
-
-  console.log(errors, isValid);
+  
 
   return (
+    <>
+{isAuth? (<Navigate to = '/' /> ): 
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
         Создание аккаунта
@@ -72,6 +82,7 @@ export const Registration = observer(() => {
         Зарегистрироваться
       </Button>
       </form>
-    </Paper>
+    </Paper>}
+    </>
   );
 });

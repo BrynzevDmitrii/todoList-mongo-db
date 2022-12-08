@@ -8,15 +8,18 @@ import { Button } from '@mui/material';
 import { AddList } from './AddList';
 import allList from '../store/allList'
 import { observer } from 'mobx-react';
+import Register from '../store/register'
+import { Navigate } from 'react-router-dom';
 
 export const Home = observer(() => {
-  
+  let isAuth = Register.registerData.length
  const [addList, setAddList] = useState(false);
 
   
  useEffect(()=>{
   allList.fetchLists()
  }, [])
+ 
   const createList=()=>{
     setAddList(true)
   }
@@ -53,6 +56,7 @@ export const Home = observer(() => {
         }
         </Grid>
       </Grid>
+      {!isAuth&&<Navigate to = '/register' />}
     </>
   );
 });
