@@ -4,25 +4,65 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 
+import { observer } from 'mobx-react';
+
+import login from '../../store/login'
+import {useForm} from 'react-hook-form'
+import { Navigate } from 'react-router-dom';
 import styles from "./Login.module.scss";
 
-export const Login = () => {
+
+
+export const Login = observer(() => {
+  const isLogin = login.dataLogin.length 
+
+  const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
+    defaultValues:{
+      email: 'Dmitrii@mail.ru',
+      password:'12345'
+    },
+    mode: "onChange",
+ })
+
+ const submit=(values)=>{
+  login.fetchLogin(values)
+  if(login.dataLogin){
+    const token = login.dataLogin;
+  window.localStorage.setItem('token', token)
+    console.log(token);
+  }
+  
+}
+
   return (
+    <>
     <Paper classes={{ root: styles.root }}>
-      <Typography classes={{ root: styles.title }} variant="h5">
+      <Typography classes={{ root: styles.title }} vriant="h5">
         Вход в аккаунт
       </Typography>
+      <form onSubmit={handleSubmit(submit)}>
       <TextField
+       {...register('email', {required: 'Введите Вашу почту'})}
         className={styles.field}
         label="E-Mail"
-        error
-        helperText="Неверно указана почта"
         fullWidth
       />
-      <TextField className={styles.field} label="Пароль" fullWidth />
-      <Button size="large" variant="contained" fullWidth>
+      <TextField 
+       {...register('password', {required: 'Введите Ваш пароль'})}
+      className={styles.field} 
+      label="Пароль" 
+      fullWidth />
+      <Button 
+      disabled = {!isValid}
+      type = 'submit'
+      size="large" 
+      variant="contained"
+       fullWidth>
         Войти
       </Button>
+      </form>
     </Paper>
+    {isLogin && <Navigate to={'/'} />}
+    </>
   );
-};
+});

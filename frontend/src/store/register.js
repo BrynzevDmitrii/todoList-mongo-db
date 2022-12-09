@@ -2,7 +2,6 @@ import { makeAutoObservable, observable } from "mobx";
 import axios  from "../axios";
 
 class Register{
-    isLoding = true;
     registerData = [];
     constructor(){
         makeAutoObservable(this)
@@ -19,9 +18,9 @@ class Register{
     }
 
    async fetchRegister(params){
-    this.isLoding = true;
-     const  {data} = (await axios.post('/auth/register', params));
+     const  {data} = await axios.post('/auth/register', params);
      this.setRegisterData(data)
+     console.log(this.registerData);
    }
 }
 
