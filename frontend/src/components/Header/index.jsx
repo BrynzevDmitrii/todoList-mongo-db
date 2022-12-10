@@ -7,13 +7,17 @@ import { Link } from 'react-router-dom';
 import register from '../../store/register';
 import { observer } from 'mobx-react';
 
+import login from '../../store/login';
+import Register from '../../store/register'
+
 
 export const Header = observer(() => {
-  const isAuth = register.registerData.length
+const isAuth= Register.registerData.length||login.dataLogin.length
 
 
   const onClickLogout = () => {
    register.setLoguot();
+   login.setLoguot()
   };
 
   return (

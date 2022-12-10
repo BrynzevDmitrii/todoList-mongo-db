@@ -10,9 +10,10 @@ import allList from '../store/allList'
 import { observer } from 'mobx-react';
 import Register from '../store/register'
 import { Navigate } from 'react-router-dom';
+import login from '../store/login';
 
 export const Home = observer(() => {
-  let isAuth = Register.registerData.length
+  let isAuth = Register.registerData.length||login.dataLogin.length
  const [addList, setAddList] = useState(false);
 
   

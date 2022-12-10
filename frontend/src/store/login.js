@@ -2,21 +2,25 @@ import { makeAutoObservable, observable } from "mobx";
 import axios  from "../axios";
 
 class Login{
-    data = [] ;
+    dataLogin = [];
     constructor(){
         makeAutoObservable(this)
     }
 
-    setDate(response) {
-        response.forEach(element => {
-            this.data.push(element)
-        });
+   setDate(response) {
+    this.dataLogin.push(response)
     }
 
-   async fetchLists(){
-     axios.get('/todo')
-        .then(response =>this.setDate(response.data))    
-   }
+    setLoguot(){
+        this.dataLogin = [] ;
+    }
+       
+
+   async fetchLogin(params){
+     const  { data } = await axios.post('/auth/login', params);
+     this.setDate(data)
+    }
+   
 }
 
 export default observable( new Login());

@@ -30,7 +30,7 @@ export const Registration = observer(() => {
   const submit=(values)=>{
     Register.fetchRegister(values)
     if(Register.registerData){
-      const token = Register.registerData.token;
+      const token = Register.registerData[0].token;
       window.localStorage.setItem('token', token)
     }
     console.log(Register.registerData);
@@ -39,7 +39,7 @@ export const Registration = observer(() => {
 
   return (
     <>
-{isAuth? (<Navigate to = '/' /> ): 
+
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
         Создание аккаунта
@@ -82,7 +82,8 @@ export const Registration = observer(() => {
         Зарегистрироваться
       </Button>
       </form>
-    </Paper>}
+    </Paper>
+    {isAuth&& <Navigate to = '/' /> }
     </>
   );
 });
