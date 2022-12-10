@@ -24,12 +24,11 @@ export const Login = observer(() => {
     mode: "onChange",
  })
 
- const submit=(values)=>{
-  login.fetchLogin(values)
+ const submit=async(values)=>{
+  await login.fetchLogin(values)
   if(login.dataLogin){
-    const token = login.dataLogin;
+     const  token = login.dataLogin[0].token
   window.localStorage.setItem('token', token)
-    console.log(token);
   }
   
 }
