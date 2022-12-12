@@ -31,6 +31,7 @@ app.get('/', (req, res)=>{
 
 app.post('/auth/register', registerValidator, UserController.register);
 app.post('/auth/login', loginValidator, UserController.login );
+app.get('/auth/me',checkIsAuth, UserController.authMe)
 
 
 

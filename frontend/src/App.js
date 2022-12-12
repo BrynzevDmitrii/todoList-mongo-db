@@ -1,10 +1,23 @@
 import Container from "@mui/material/Container";
+import { useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
+
+import { observer } from 'mobx-react';
 
 import { Header } from "./components/Header/index.jsx";
 import { Home, FullList, Registration, Login } from "./pages";
 
-function App() {
+import isAuthme from "./store/isAuthMe.js";
+
+
+const App = observer(()=> {
+
+useEffect(()=>{
+    isAuthme.fetchAuthMe()
+  },[]);
+
+
+
   return (
     <>
       <Header />
@@ -18,6 +31,6 @@ function App() {
       </Container>
     </>
   );
-}
+})
 
 export default App;

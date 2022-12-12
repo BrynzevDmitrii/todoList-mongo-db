@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import { validationResult } from 'express-validator';
 
 import modelUser  from '../models/User.js';
+import User from '../models/User.js';
 
 
 
@@ -94,4 +95,28 @@ export const login = async (req, res) => {
                 messege:"Неверный логин или пароль"
             })
     }
-    }     
+    } ;   
+
+    export const authMe = async (req, res) => {
+        try {
+
+            const user = await User.findById(req.userId)
+            if(!user){
+                return res.status(404).json({
+                    massage: 'Пользователь не найден'
+                })
+            };
+
+
+            const {passwordHash, ...userData } = user._doc
+    
+            res.json({ userData});
+
+        } 
+        catch (error) {
+            console.log(error);
+            res.status(400).json({
+                massage: 'Ошибка аудентификации'
+            })
+        }
+    }

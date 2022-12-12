@@ -5,18 +5,23 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 
-import styles from './Registration.module.scss';
+
 import { observer } from 'mobx-react';
 
-import {useForm} from 'react-hook-form'
-import Register from '../../store/register'
+import {useForm} from 'react-hook-form';
 import { Navigate } from 'react-router-dom';
+
+
+import Register from '../../store/register';
+
+
+import styles from './Registration.module.scss';
 
 
 
 export const Registration = observer(() => {
-
-  let isAuth = Register.registerData.length;
+  let isAuthRegistrations = Boolean(Register.registerData.length);
+ 
 
  const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
     defaultValues:{
@@ -27,8 +32,8 @@ export const Registration = observer(() => {
     mode: "onChange",
  })
 
-  const submit=(values)=>{
-    Register.fetchRegister(values)
+  const submit=async(values)=>{
+    await Register.fetchRegister(values)
     if(Register.registerData){
       const token = Register.registerData[0].token;
       window.localStorage.setItem('token', token)
@@ -37,9 +42,10 @@ export const Registration = observer(() => {
   }
   
 
-  return (
-    <>
+  if(isAuthRegistrations) {return <Navigate to={'/'} />};
+  
 
+  return (
     <Paper classes={{ root: styles.root }}>
       <Typography classes={{ root: styles.title }} variant="h5">
         Создание аккаунта
@@ -83,7 +89,5 @@ export const Registration = observer(() => {
       </Button>
       </form>
     </Paper>
-    {isAuth&& <Navigate to = '/' /> }
-    </>
   );
 });

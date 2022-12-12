@@ -9,7 +9,6 @@ class Register{
 
     setRegisterData(response) {
         this.registerData.push(response)
-        this.isLoding = false;
     }
 
     setLoguot(){
