@@ -10,7 +10,7 @@ export default (req, res, next) => {
 
         } catch (error) {
             res.status(403).json({
-                massage:"Нет доступа", 
+                massage:"Нет такого пользователя", 
             })
         }
     }else {

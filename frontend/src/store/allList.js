@@ -14,6 +14,10 @@ class allList{
         });
     }
 
+    removeDate(){
+        this.data = []
+    }
+
    async fetchLists(){
      await axios.get('/todo')
         .then(response =>this.setDate(response.data))    

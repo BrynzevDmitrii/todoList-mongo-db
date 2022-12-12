@@ -13,6 +13,7 @@ class Login{
 
     setLoguot(){
         this.dataLogin = [] ;
+        console.log(this.dataLogin);
     }
        
 

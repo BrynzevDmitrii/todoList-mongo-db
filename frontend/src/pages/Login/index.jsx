@@ -14,7 +14,7 @@ import styles from "./Login.module.scss";
 
 
 export const Login = observer(() => {
-  const isLogin = login.dataLogin.length 
+  const isLogin = Boolean(login.dataLogin.length) 
 
   const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
     defaultValues:{
@@ -31,7 +31,10 @@ export const Login = observer(() => {
   window.localStorage.setItem('token', token)
   }
   
+  
 }
+
+if(isLogin) {return <Navigate to={'/'} />};
 
   return (
     <>
@@ -61,7 +64,7 @@ export const Login = observer(() => {
       </Button>
       </form>
     </Paper>
-    {isLogin && <Navigate to={'/'} />}
+    
     </>
   );
 });
