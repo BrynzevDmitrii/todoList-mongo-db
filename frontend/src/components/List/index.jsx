@@ -9,6 +9,8 @@ import { PostSkeleton } from './Skeleton';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { observer } from 'mobx-react';
+import { ItemsHomePage } from '../ItemsHomePage/ItemsHomePage';
+
 
 export const List = observer(({
   _id,
@@ -42,20 +44,26 @@ export const List = observer(({
           <IconButton  onClick={onClickRemove} color="secondary">
             <DeleteIcon />
           </IconButton>
-        </div>
+          </div>
       )}
       {
-        <Box>
-          title = {title}
+        <Box 
+        textAlign='center' 
+        color='InfoText' 
+        fontFamily='monospace'
+        height={80}
+        bgcolor ='chocolate'
+        >
+          <p className={styles.titleParagraph}>
+          {title}
+          </p>
+          
         </Box>
       }
-      {/* {imageUrl && (
-        <img
-          className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-          src={imageUrl}
-          alt={title}
-        />
-      )} */}
+      
+        <ItemsHomePage />
+        
+        
     </div>
   );
 });

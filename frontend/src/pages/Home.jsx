@@ -8,14 +8,19 @@ import { Button } from '@mui/material';
 import { AddList } from './AddList';
 import allList from '../store/allList'
 import { observer } from 'mobx-react';
+import isAuthMe from '../store/isAuthMe';
+import { NavLink } from 'react-router-dom';
 
 
 export const Home = observer(() => {
  const [addList, setAddList] = useState(false);
 
-  
+ let authMe = Boolean(isAuthMe.dataMe.length)
+
  useLayoutEffect(()=>{
+  
   allList.fetchLists()
+  
   return()=>(
     allList.removeDate()
   )
@@ -32,14 +37,21 @@ export const Home = observer(() => {
     setAddList(false);
   }
 
+  if(!authMe) {
+    <NavLink to={'/login'} />
+  }
 
    
 
   
   return (
     <>
-  <Button variant="contained" onClick={() => createList()}>Создать новый список</Button><Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
-        </Tabs><Grid container spacing={2}>
+  <Button variant="contained" onClick={() => createList()}>Создать новый список</Button>
+  <Tabs style={{ marginBottom: 15 }} 
+  value={0} 
+  aria-label="basic tabs example">
+        </Tabs>
+        <Grid container spacing={2}>
             <Grid xs={8} item>
               {allList.data.map((item) => <List
                 key={item._id}

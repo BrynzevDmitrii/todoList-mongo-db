@@ -1,7 +1,7 @@
 $blue: #4361ee;
 
 .root {
-  background-color: #fff;
+  background-color: chocolate;
   border: 1px solid #dedede;
   border-radius: 6px;
   overflow: hidden;
@@ -151,8 +151,15 @@ $blue: #4361ee;
   position: absolute;
   right: 15px;
   top: 15px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: chocolate;
   border-radius: 10px;
   opacity: 0;
   transition: all 0.15s ease-in-out;
+}
+
+.titleParagraph {
+    color: #4361ee;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 20px;
 }

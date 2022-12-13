@@ -1,63 +1,74 @@
-import React from 'react';
-import Button from '@mui/material/Button';
+import React from "react";
+import Button from "@mui/material/Button";
 
+import Container from "@mui/material/Container";
+import { Link} from "react-router-dom";
 
-import Container from '@mui/material/Container';
-import { Link, NavLink } from 'react-router-dom';
+import { observer } from "mobx-react";
 
-import { observer } from 'mobx-react';
+import login from "../../store/login";
+import register from "../../store/register";
+import isAuthme from "../../store/isAuthMe";
 
-import login from '../../store/login';
-import register from '../../store/register';
-import isAuthme from '../../store/isAuthMe';
-
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
 
 export const Header = observer(() => {
-let isAuthHeader = Boolean(isAuthme.dataMe.length||login.dataLogin.length)
+  let isAuthHeader = Boolean(
+    isAuthme.dataMe.length ||
+      login.dataLogin.length ||
+      register.registerData.length
+  );
 
-
-console.log(isAuthHeader);
+  console.log(isAuthHeader);
 
   const onClickLogout = () => {
-   isAuthme.setLogoutMe()
-   register.setLoguot();
-   login.setLoguot();
-   window.localStorage.removeItem('token')
+    isAuthme.setLogoutMe();
+    register.setLoguot();
+    login.setLoguot();
+    window.localStorage.removeItem("token");
   };
 
   return (
     <div className={styles.root}>
       <Container maxWidth="lg">
-        <div className={styles.inner}>
-          <Link className={styles.logo} to ="/">
-            <div>TodoListApp</div>
-          </Link>
-          <div className={styles.buttons}>
-            {isAuthHeader ? (
-              <>
-                <Link to ="/posts/create">
+        {isAuthHeader ? (
+          <>
+            <div className={styles.inner}>
+              <Link className={styles.logo} to="/">
+                <div>TodoListApp</div>
+              </Link>
+              <div className={styles.buttons}>
+                <Link to="/posts/create">
                   <Button variant="contained">Написать статью</Button>
                 </Link>
-                <Link to ="/register">
-                <Button onClick={()=>onClickLogout()} variant="contained" color="error">
-                  Выйти
-                </Button>
+                <Link to="/register">
+                  <Button
+                    onClick={() => onClickLogout()}
+                    variant="contained"
+                    color="error"
+                  >
+                    Выйти
+                  </Button>
                 </Link>
-              </>
-            ) : (
-              <>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={styles.inner}>              
+                <div className={styles.logo}>Создай первый список</div>
+              <div className={styles.buttons}>
                 <Link to="/login">
                   <Button variant="outlined">Войти</Button>
                 </Link>
                 <Link to="/register">
                   <Button variant="contained">Создать аккаунт</Button>
                 </Link>
-              </>
-            )}
-          </div>
-        </div>
+              </div>
+            </div>
+          </>
+        )}
       </Container>
     </div>
   );
