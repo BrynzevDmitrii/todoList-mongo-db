@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from "@mui/material/Container";
+import { useEffect } from "react";
+import { Routes, Route} from "react-router-dom";
 
-function App() {
+import { observer } from 'mobx-react';
+
+import { Header } from "./components/Header/index.jsx";
+import { Home, FullList, Registration, Login } from "./pages";
+
+import isAuthme from "./store/isAuthMe.js";
+
+
+const App = observer(()=> {
+
+useEffect(()=>{
+    isAuthme.fetchAuthMe()
+  },[]);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Container maxWidth="lg">
+        <Routes>
+          <Route path ='/' element = {<Home />} />
+          <Route path ='/list/:id' element = {<FullList />} />
+          <Route path ='/login' element = {<Login />} />
+          <Route path ='/register' element = {<Registration />} />
+        </Routes>
+      </Container>
+    </>
   );
-}
+})
 
 export default App;
