@@ -16,7 +16,7 @@ import styles from "./Login.module.scss";
 export const Login = observer(() => {
   const isLogin = Boolean(login.dataLogin.length) 
 
-  const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
+  const { register, handleSubmit, formState : { isValid }} = useForm({
     defaultValues:{
       email: 'Dmitrii@mail.ru',
       password:'12345'
