@@ -3,11 +3,12 @@ import Tabs from '@mui/material/Tabs';
 import Grid from '@mui/material/Grid';
 
 
-import { List } from '../components/List';
+// import { List } from '../components/List';
 import { Button } from '@mui/material';
 import { AddList } from './AddList';
 import allList from '../store/allList'
 import { observer } from 'mobx-react';
+import { ListItems } from '../components/ListItems/ListItems';
 
 
 export const Home = observer(() => {
@@ -33,17 +34,23 @@ export const Home = observer(() => {
   }
 
 
-   
+  if (allList.data.length === 0) {
+    return 'Loading';
+  }
 
   
   return (
     <>
-  <Button variant="contained" onClick={() => createList()}>Создать новый список</Button><Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
-        </Tabs><Grid container spacing={2}>
-            <Grid xs={8} item>
-              {allList.data.map((item) => <List
-                key={item._id}
-                // id={item._id}
+  <Button variant="contained" onClick={() => createList()}>Создать новый список</Button>
+  <Tabs style={{ marginBottom: 15 }} value={0} aria-label="basic tabs example">
+        </Tabs>
+        <Grid container spacing={2}>
+            <Grid xs={8} item>{}
+            {(allList.data.length === 0)?'Loading' :
+              allList.data.map((item) => 
+              <ListItems
+                key={item._id+'lkj'}
+                id={item._id}
                 title={item.title}
                 imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
                 user={{
