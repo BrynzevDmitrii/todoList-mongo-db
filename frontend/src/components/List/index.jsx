@@ -5,10 +5,10 @@ import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 
 import styles from './List.module.scss';
-import { PostSkeleton } from './Skeleton';
+// import { PostSkeleton } from './Skeleton';
 import { Link } from 'react-router-dom';
-import { Box } from '@mui/material';
 import { observer } from 'mobx-react';
+import allList from '../../store/allList';
 
 export const List = observer(({
   _id,
@@ -24,9 +24,9 @@ export const List = observer(({
   isLoading,
   isEditable,
 }) => {
-  if (isLoading) {
-    return <PostSkeleton />;
-  }
+
+
+ 
 
   const onClickRemove = () => {};
 
@@ -45,17 +45,9 @@ export const List = observer(({
         </div>
       )}
       {
-        <Box>
-          title = {title}
-        </Box>
+         !allList.data?'Loading' : 'jr'
       }
-      {/* {imageUrl && (
-        <img
-          className={clsx(styles.image, { [styles.imageFull]: isFullPost })}
-          src={imageUrl}
-          alt={title}
-        />
-      )} */}
+   
     </div>
   );
 });
