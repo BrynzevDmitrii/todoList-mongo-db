@@ -4,13 +4,13 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 
-import styles from './List.module.scss';
+import styles from './RemvUpgrd.module.scss';
 // import { PostSkeleton } from './Skeleton';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import allList from '../../store/allList';
 
-export const List = observer(({
+
+export const RemvUpgrd = observer(({
   _id,
   title,
   createdAt,
@@ -23,6 +23,8 @@ export const List = observer(({
   isFullPost,
   isLoading,
   isEditable,
+  PropStyles
+  
 }) => {
 
 
@@ -31,7 +33,7 @@ export const List = observer(({
   const onClickRemove = () => {};
 
   return (
-    <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
+    <div className={clsx(styles.root, { [styles.rootFull]: isFullPost }, PropStyles)}>
       {isEditable && (
         <div className={styles.editButtons}>
           <Link to={`/todo/${_id}/edit`}>
@@ -44,9 +46,7 @@ export const List = observer(({
           </IconButton>
         </div>
       )}
-      {
-         !allList.data?'Loading' : 'jr'
-      }
+
    
     </div>
   );
