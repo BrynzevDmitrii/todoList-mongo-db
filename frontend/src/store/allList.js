@@ -21,6 +21,7 @@ class allList{
    async fetchLists(){
      await axios.get('/todo')
         .then(response =>this.setDate(response.data))    
+        console.log(this.data);
    }
 }
 

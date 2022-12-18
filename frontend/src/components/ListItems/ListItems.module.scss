@@ -1,7 +1,9 @@
 
     .root {
-      margin-top: 100px;
-      min-width: 275;
+      margin-top: 50px;
+      max-height: 515px;
+      box-sizing: border-box;
+      padding: 20px;
     }
     .bullet {
       display: inline-block;
@@ -14,3 +16,34 @@
     .pos {
       margin-bottom: 12px;
     }
+
+    .r{
+     display: flex;
+     justify-content: end;
+    }
+
+    .df {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 2px solid #e1dee4; 
+      align-items: self-end;
+    }
+
+    .item {
+      flex-direction: column;
+      height: 30px;
+      
+      font-weight: 800;
+      font-size: 1em;
+       
+      color: #6b2eaf;
+      align-items: flex-start !important;
+      
+    }
+    
+    .underline{
+      color: #115714;
+      text-decoration:line-through !important;
+
+    }
+    

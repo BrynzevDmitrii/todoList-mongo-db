@@ -13,14 +13,22 @@ setLogoutMe(){
     }
 
 async setDate(response) {
-    let date = await response;
-    this.dataMe.push(date)
+    await  response
+        this.dataMe.push(response)
     console.log(this.dataMe);
     }
+
+ getDate() {
+         Boolean(this.dataMe.length);
+        // // eslint-disable-next-line no-unused-expressions
+        // isAuth ? 'true' : console.log('нет данных в AuthMe');
+
+        }
        
 async fetchAuthMe(){
      const { data } = await axios.get('/auth/me');
      this.setDate(data)
+     console.log('sucsees' ,data);
     }
    
 }
