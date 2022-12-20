@@ -1,5 +1,5 @@
 import { makeAutoObservable, observable } from "mobx";
-import axios  from "../axios";
+import axiosBakcend  from "../axios";
 
 class isAuthMe{
     dataMe = [];
@@ -20,17 +20,21 @@ async setDate(response) {
 
  getDate() {
          Boolean(this.dataMe.length);
-        // // eslint-disable-next-line no-unused-expressions
-        // isAuth ? 'true' : console.log('нет данных в AuthMe');
-
         }
        
 async fetchAuthMe(){
-     const { data } = await axios.get('/auth/me');
-     this.setDate(data)
-     console.log('sucsees' ,data);
+    try {
+        const { data } = await axiosBakcend.get('/auth/me');
+        this.setDate(data)
+        console.log('sucsees' ,data);
+    } catch (error) {
+        const response = window.localStorage.getItem('token');
+        this.setDate(response)
     }
+    }
+     
    
 }
+
 
 export default observable( new isAuthMe());

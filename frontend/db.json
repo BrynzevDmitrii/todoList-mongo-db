@@ -1,0 +1,46 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "tetr",
+      "author": "Dmitrriy"
+    },
+    {
+      "title": "test2",
+      "author": "DmitrriyBryncev",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "id":1,
+    "email": "Dmitrii@mail.ru",
+    "password": "12345",
+    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
+  },
+  {
+    "id":2,
+    "email": "Vasya@mail.ru",
+    "password": "12345",
+    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
+  },
+  {
+    "id":3,
+    "email": "Petya@mail.ru",
+    "password": "12345",
+    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
+  }
+]
+}
