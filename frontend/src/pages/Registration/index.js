@@ -38,7 +38,6 @@ export const Registration = observer(() => {
       const token = Register.registerData[0].token;
       window.localStorage.setItem('token', token)
     }
-    console.log(Register.registerData);
   }
   
 

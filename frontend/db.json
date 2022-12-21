@@ -1,46 +1,64 @@
 {
-  "posts": [
+  "lists": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "Купть в магазине",
+      "items": [
+        {"item":"Хлеб", "isChecked": false},
+        {"item":"Молоко", "isChecked": true},
+        {"item":"Макароны", "isChecked": true},
+        {"item":"Печенье", "isChecked": false},
+        {"item":"Кофе", "isChecked": false}
+      ],
+      "authorId": 2
     },
     {
       "id": 2,
-      "title": "tetr",
-      "author": "Dmitrriy"
+      "title": "Купть в строительном магазине",
+      "items": [
+        {"item":"Молоток", "isChecked": false},
+        {"item":"Гвозди", "isChecked": false},
+        {"item":"Шпакля", "isChecked": true},
+        {"item":"Топор", "isChecked": false},
+        {"item":"Перфоратор", "isChecked": false}
+      ],
+      "authorId": 2
     },
     {
-      "title": "test2",
-      "author": "DmitrriyBryncev",
+      "title": "Запчасти для машины",
+      "items": [
+        {"item":"ШРУС", "isChecked": true},
+        {"item":"Рулевая тяга", "isChecked": false},
+        {"item":"Колодки", "isChecked": false},
+        {"item":"Молоток", "isChecked": false},
+        {"item":"Фильтры: масляный, бензиновый, воздушный", "isChecked": false}
+      ],
+      "authorId": 2,
       "id": 3
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
     }
   ],
   "profile": [
     {
-      "id":1,
-    "email": "Dmitrii@mail.ru",
-    "password": "12345",
-    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
-  },
-  {
-    "id":2,
-    "email": "Vasya@mail.ru",
-    "password": "12345",
-    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
-  },
-  {
-    "id":3,
-    "email": "Petya@mail.ru",
-    "password": "12345",
-    "token": "rewj232ibh24deiqwde5ljk44dfqewudh8"
-  }
-]
+      "id": 1,
+      "email": "Dmitrii@mail.ru",
+      "password": "12345",
+      "fullName": "Dmitrii",
+      "token": "rewj232ibh24deiqwde5ljk44dfqewudh8bh24deqwde5ljk4"
+    },
+    {
+      "id": 2,
+      "email": "Vasya@mail.ru",
+      "password": "12345",
+      "fullName": "Vasya",
+      "token": "rewj232ibh24deiqwde5ljk44dfqewudh85ljkqwde5ljk44d"
+    },
+    {
+      "id": 3,
+      "email": "Petya@mail.ru",
+      "password": "12345",
+      "fullName": "Petya",
+      "token": "rewj232ibh24deiqwde5ljk44dfqewudh8dfqewu24deiqwde5"
+    }
+   
+  ]
 }

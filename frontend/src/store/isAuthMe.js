@@ -15,7 +15,6 @@ setLogoutMe(){
 async setDate(response) {
     await  response
         this.dataMe.push(response)
-    console.log(this.dataMe);
     }
 
  getDate() {
@@ -29,7 +28,13 @@ async fetchAuthMe(){
         console.log('sucsees' ,data);
     } catch (error) {
         const response = window.localStorage.getItem('token');
-        this.setDate(response)
+        console.log(response);
+        if(response===null){
+           console.log('not token');
+        } else{
+            this.setDate(response)
+        }
+        
     }
     }
      

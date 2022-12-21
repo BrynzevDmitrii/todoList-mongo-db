@@ -25,12 +25,11 @@ export const Login = observer(() => {
  })
 
  const submit=async(values)=>{
+
   await login.fetchLogin(values)
-  console.log(login.dataLogin);
+
   if(login.dataLogin){
   const  token = await login.dataLogin[0].token
-  console.log(token);
-
   window.localStorage.setItem('token', token)
   }
   

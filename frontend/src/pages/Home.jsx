@@ -25,7 +25,6 @@ export const Home = observer(() => {
   const isAuth = async () => {
     await isAuthMe.fetchAuthMe();
     setIsAuthUser(Boolean(isAuthMe.dataMe.length));
-    console.log(isAuthMe.dataMe);
   };
 
   const createList = () => {
