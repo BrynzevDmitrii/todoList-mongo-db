@@ -14,7 +14,7 @@ setLogoutMe(){
 
 async setDate(response) {
     await  response
-        this.dataMe.push(response)
+        this.dataMe.push(response);
     }
 
  getDate() {
@@ -22,18 +22,15 @@ async setDate(response) {
         }
        
 async fetchAuthMe(){
-    try {
-        const { data } = await axiosBakcend.get('/auth/me');
-        this.setDate(data)
-        console.log('sucsees' ,data);
-    } catch (error) {
+    try { 
         const response = window.localStorage.getItem('token');
-        console.log(response);
-        if(response===null){
-           console.log('not token');
-        } else{
-            this.setDate(response)
-        }
+    if(response===null){
+       this.dataMe=[];
+    } else{
+        this.setDate(response);
+    }
+    } catch (error) {
+       console.log(error);
         
     }
     }

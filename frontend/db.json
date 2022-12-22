@@ -4,11 +4,26 @@
       "id": 1,
       "title": "Купть в магазине",
       "items": [
-        {"item":"Хлеб", "isChecked": false},
-        {"item":"Молоко", "isChecked": true},
-        {"item":"Макароны", "isChecked": true},
-        {"item":"Печенье", "isChecked": false},
-        {"item":"Кофе", "isChecked": false}
+        {
+          "item": "Хлеб",
+          "isChecked": false
+        },
+        {
+          "item": "Молоко",
+          "isChecked": true
+        },
+        {
+          "item": "Макароны",
+          "isChecked": true
+        },
+        {
+          "item": "Печенье",
+          "isChecked": false
+        },
+        {
+          "item": "Кофе",
+          "isChecked": false
+        }
       ],
       "authorId": 2
     },
@@ -16,22 +31,52 @@
       "id": 2,
       "title": "Купть в строительном магазине",
       "items": [
-        {"item":"Молоток", "isChecked": false},
-        {"item":"Гвозди", "isChecked": false},
-        {"item":"Шпакля", "isChecked": true},
-        {"item":"Топор", "isChecked": false},
-        {"item":"Перфоратор", "isChecked": false}
+        {
+          "item": "Молоток",
+          "isChecked": false
+        },
+        {
+          "item": "Гвозди",
+          "isChecked": false
+        },
+        {
+          "item": "Шпакля",
+          "isChecked": true
+        },
+        {
+          "item": "Топор",
+          "isChecked": false
+        },
+        {
+          "item": "Перфоратор",
+          "isChecked": false
+        }
       ],
       "authorId": 2
     },
     {
       "title": "Запчасти для машины",
       "items": [
-        {"item":"ШРУС", "isChecked": true},
-        {"item":"Рулевая тяга", "isChecked": false},
-        {"item":"Колодки", "isChecked": false},
-        {"item":"Молоток", "isChecked": false},
-        {"item":"Фильтры: масляный, бензиновый, воздушный", "isChecked": false}
+        {
+          "item": "ШРУС",
+          "isChecked": true
+        },
+        {
+          "item": "Рулевая тяга",
+          "isChecked": false
+        },
+        {
+          "item": "Колодки",
+          "isChecked": false
+        },
+        {
+          "item": "Молоток",
+          "isChecked": false
+        },
+        {
+          "item": "Фильтры: масляный, бензиновый, воздушный",
+          "isChecked": false
+        }
       ],
       "authorId": 2,
       "id": 3
@@ -58,7 +103,13 @@
       "password": "12345",
       "fullName": "Petya",
       "token": "rewj232ibh24deiqwde5ljk44dfqewudh8dfqewu24deiqwde5"
+    },
+    {
+      "email": "Wew@wqw.ww",
+      "password": "qsasdqwfdqwf",
+      "fullName": "tert45",
+      "token": "rewj232ibh24deiqwde5ljk44dfqewudh8",
+      "id": 4
     }
-   
   ]
 }

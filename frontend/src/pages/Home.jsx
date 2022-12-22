@@ -17,9 +17,7 @@ export const Home = observer(() => {
   const [isAuthUser, setIsAuthUser] = useState(false);
 
   useLayoutEffect(() => {
-    isAuth();
-    allList.fetchLists();
-    return () => allList.removeDate();
+    isAuthMe.fetchAuthMe()
   }, []);
 
   const isAuth = async () => {
@@ -35,16 +33,14 @@ export const Home = observer(() => {
     setAddList(false);
   };
 
-  if (allList.data.length === 0) {
-    return "Loading";
+  if (!isAuthMe.dataMe.length) {
+    return <Navigate to={"/register"} />
   }
 
   return (
     <>
-      {!isAuthUser ? (
-        <Navigate to={"/register"} />
-      ) : (
-        <>
+     
+
           <Button variant="contained" onClick={() => createList()}>
             Создать новый список
           </Button>
@@ -77,8 +73,6 @@ export const Home = observer(() => {
                   ))}
             </Grid>
           </Grid>
-        </>
-      )}
       {addList && <AddList openPopup={createList} closedPopup={closedPopup} />}
     </>
   );

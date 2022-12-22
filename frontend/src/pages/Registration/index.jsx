@@ -14,13 +14,18 @@ import { Navigate } from 'react-router-dom';
 
 import Register from '../../store/register';
 
+import login from '../../store/login';
+
 
 import styles from './Registration.module.scss';
+import isAuthMe from '../../store/isAuthMe';
 
 
 
 export const Registration = observer(() => {
-  let isAuthRegistrations = Boolean(Register.registerData.length);
+  let isAuthRegistrations = Boolean(Register.registerData.length||isAuthMe.dataMe.length);
+
+  console.log(isAuthRegistrations);
  
 
  const { register, handleSubmit, formState : {errors ,isValid }} = useForm({
