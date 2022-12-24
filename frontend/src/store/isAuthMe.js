@@ -1,5 +1,4 @@
 import { makeAutoObservable, observable } from "mobx";
-import axiosBakcend  from "../axios";
 
 class isAuthMe{
     dataMe = [];
@@ -12,13 +11,12 @@ setLogoutMe(){
         this.dataMe=[];
     }
 
-async setDate(response) {
-    await  response
+ setDate(response) {
         this.dataMe.push(response);
     }
 
  getDate() {
-         Boolean(this.dataMe.length);
+        return this.dataMe.length;
         }
        
 async fetchAuthMe(){

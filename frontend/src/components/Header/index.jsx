@@ -15,7 +15,7 @@ import styles from './Header.module.scss';
 
 
 export const Header = observer(() => {
-let isAuthHeader = Boolean(isAuthme.dataMe.length||login.dataLogin.length)
+let isAuthHeader = Boolean(isAuthme.getDate())
 
 
 console.log(isAuthHeader);
@@ -26,6 +26,8 @@ console.log(isAuthHeader);
    login.setLoguot();
    window.localStorage.removeItem('token')
   };
+
+  console.log('render');
 
   return (
     <div className={styles.root}>
