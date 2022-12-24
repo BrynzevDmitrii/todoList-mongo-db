@@ -26,7 +26,7 @@ export const Login = observer(() => {
 
  const submit=async(values)=>{
 
-  await login.fetchLogin(values)
+  login.fetchLogin(values)
 
   if(login.dataLogin){
   const  token = await login.dataLogin[0].token

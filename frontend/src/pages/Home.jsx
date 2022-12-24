@@ -14,16 +14,11 @@ import { Navigate } from "react-router-dom";
 export const Home = observer(() => {
   const [addList, setAddList] = useState(false);
 
-  const [isAuthUser, setIsAuthUser] = useState(false);
-
   useLayoutEffect(() => {
     isAuthMe.fetchAuthMe()
   }, []);
 
-  const isAuth = async () => {
-    await isAuthMe.fetchAuthMe();
-    setIsAuthUser(Boolean(isAuthMe.dataMe.length));
-  };
+  
 
   const createList = () => {
     setAddList(true);
@@ -33,7 +28,7 @@ export const Home = observer(() => {
     setAddList(false);
   };
 
-  if (!isAuthMe.dataMe.length) {
+  if (!isAuthMe.getDate()) {
     return <Navigate to={"/register"} />
   }
 
