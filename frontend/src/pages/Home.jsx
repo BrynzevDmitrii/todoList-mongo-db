@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Grid from "@mui/material/Grid";
 
@@ -14,12 +14,14 @@ import { Navigate } from "react-router-dom";
 export const Home = observer(() => {
   const [addList, setAddList] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     isAuthMe.fetchAuthMe()
+    allList.fetchLists()
+    console.log('useEffectHome');
+    return allList.removeDate()
   }, []);
 
-  
-
+ 
   const createList = () => {
     setAddList(true);
   };
@@ -31,11 +33,9 @@ export const Home = observer(() => {
   if (!isAuthMe.getDate()) {
     return <Navigate to={"/register"} />
   }
-
+  console.log('render <Home/>');
   return (
     <>
-     
-
           <Button variant="contained" onClick={() => createList()}>
             Создать новый список
           </Button>
@@ -46,26 +46,16 @@ export const Home = observer(() => {
           ></Tabs>
           <Grid container spacing={2}>
             <Grid xs={8} item>
-              {allList.data.length === 0
-                ? "Loading"
-                : allList.data.map((item) => (
+              {allList.data.length
+                ?
+                 allList.data.map((item) => (
                     <ListItems
-                      key={item._id + "lkj"}
-                      id={item._id}
+                      id={item.id}
                       title={item.title}
-                      items={item.items.map((i) => i)}
-                      isChecket={item.isChecket}
-                      imageUrl="https://res.cloudinary.com/practicaldev/image/fetch/s--UnAfrEG8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/icohm5g0axh9wjmu4oc3.png"
-                      user={{
-                        avatarUrl:
-                          "https://res.cloudinary.com/practicaldev/image/fetch/s--uigxYVRB--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/187971/a5359a24-b652-46be-8898-2c5df32aa6e0.png",
-                        fullName: "Keff",
-                      }}
-                      createdAt={"3 декабря 2022 г."}
-                      commentsCount={3}
-                      isEditable
+                      items={item.items.map((i) => i.item)}
+                      isChecked = {item.items.map((i) => i.isChecked)}
                     />
-                  ))}
+                  )):'loading'}
             </Grid>
           </Grid>
       {addList && <AddList openPopup={createList} closedPopup={closedPopup} />}

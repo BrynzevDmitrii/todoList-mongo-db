@@ -26,10 +26,10 @@ export const Login = observer(() => {
 
  const submit=async(values)=>{
 
-  login.fetchLogin(values)
+  await login.fetchLogin(values)
 
   if(login.dataLogin){
-  const  token = await login.dataLogin[0].token
+  const  token = login.dataLogin[0].token
   window.localStorage.setItem('token', token)
   }
   

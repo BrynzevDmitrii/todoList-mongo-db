@@ -1,20 +1,18 @@
 import React from "react";
-import { observer } from "mobx-react";
 import clsx from "clsx";
 import styles from "./ListItems.module.scss";
 
-export const ListItems = observer((props) => {
-  return (
-    
-         <>
-            {props.title}
-         
+export const ListItems = (props) => {
 
-        {props.items.map((i, indx) => {
+
+  return (
+<>
+            {props.title}
+            <ul key={props.id+'jkej'} className={styles.df}>
+
+        {props.items.map((i) => {
           return (
-            <ul key={indx } className={styles.df}>
-              {indx + 1}
-              <li
+              <li key={props.id+'hd'}
                 className={clsx(
                   styles.item,
                   props.isChecket && styles.underline
@@ -22,10 +20,11 @@ export const ListItems = observer((props) => {
               >
                 &nbsp; {i}
               </li>
-            </ul>
+          
           );
         })}
+          </ul>
     
     </>
   );
-});
+};

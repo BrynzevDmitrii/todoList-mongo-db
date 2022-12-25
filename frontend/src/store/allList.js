@@ -8,9 +8,10 @@ class allList{
         makeAutoObservable(this)
     }
 
-    setDate(response) {
-        response.forEach(element => {
+   async setDate(response) {
+      response.forEach(element => {
             this.data.push(element)
+            console.log(this.data);
         });
     }
 
@@ -19,9 +20,16 @@ class allList{
     }
 
    async fetchLists(){
-     await axios.get('/todo')
+     
+    try {
+        await axios.get('/todo')
         .then(response =>this.setDate(response.data))    
         console.log(this.data);
+    } catch (error) {
+        const result = await (await axios('http://localhost:3001/lists')).data
+        this.setDate(result)
+        console.log(error);
+    }
    }
 }
 
