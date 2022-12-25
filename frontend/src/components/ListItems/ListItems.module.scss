@@ -24,9 +24,9 @@
 
     .df {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       border-bottom: 2px solid #e1dee4; 
-      align-items: self-end;
+      align-items: self-start;
     }
 
     .item {
@@ -38,6 +38,7 @@
        
       color: #6b2eaf;
       align-items: flex-start !important;
+      list-style-type: none;
       
     }
     

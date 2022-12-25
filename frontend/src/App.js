@@ -8,6 +8,7 @@ import { Header } from "./components/Header/index.jsx";
 import { Home, FullList, Registration, Login } from "./pages";
 
 import isAuthme from "./store/isAuthMe.js";
+import allList from "./store/allList.js";
 
 
 const App = observer(()=> {
@@ -16,7 +17,7 @@ useEffect(()=>{
     isAuthme.fetchAuthMe()
   },[]);
 
-
+console.log('app');
 
   return (
     <>

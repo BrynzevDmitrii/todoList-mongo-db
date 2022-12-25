@@ -10,7 +10,6 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.11.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
-    "@reduxjs/toolkit": "^1.8.2",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -20,10 +19,9 @@
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "babel-preset-react-app": "^10.0.1",
     "bfj": "^7.0.2",
-    "browserslist": "^4.18.1",
-    "camelcase": "^6.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "clsx": "^1.1.1",
     "concurrently": "^7.6.0",
@@ -36,7 +34,6 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
-    "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
@@ -58,10 +55,6 @@
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.32.0",
-    "react-jss": "^10.9.2",
-    "react-markdown": "^8.0.3",
-    "react-redux": "^8.0.2",
-    "react-refresh": "^0.11.0",
     "react-router-dom": "^6.3.0",
     "react-simplemde-editor": "^5.0.2",
     "resolve": "^1.20.0",
@@ -156,14 +149,19 @@
   "babel": {
     "presets": [
       "react-app"
+       
     ],
     "plugins": [
       [
         "@babel/plugin-proposal-decorators",
         {
-          "legacy": true
+          "legacy": true,
+          "blacklist": [
+            "useStrict"
+          ]
         }
-      ]
+      ],
+      ["transform-remove-strict-mode"]
     ]
   }
 }

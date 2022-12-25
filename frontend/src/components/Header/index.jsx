@@ -17,9 +17,6 @@ import styles from './Header.module.scss';
 export const Header = observer(() => {
 let isAuthHeader = Boolean(isAuthme.getDate())
 
-
-console.log(isAuthHeader);
-
   const onClickLogout = () => {
    isAuthme.setLogoutMe()
    register.setLoguot();

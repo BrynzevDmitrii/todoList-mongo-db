@@ -21,7 +21,7 @@ setLogoutMe(){
        
 async fetchAuthMe(){
     try { 
-        const response = window.localStorage.getItem('token');
+        const response = await window.localStorage.getItem('token');
     if(response===null){
        this.dataMe=[];
     } else{
