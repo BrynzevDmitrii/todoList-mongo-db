@@ -15,12 +15,14 @@ export const Home = observer(() => {
   const [addList, setAddList] = useState(false);
 
   useEffect(() => {
-    isAuthMe.fetchAuthMe()
-    allList.fetchLists()
-    console.log('useEffectHome');
+    yut()
     return allList.removeDate()
   }, []);
 
+
+  const yut=()=>{
+     allList.fetchLists()
+}
  
   const createList = () => {
     setAddList(true);

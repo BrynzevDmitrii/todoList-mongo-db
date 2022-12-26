@@ -5,10 +5,10 @@ import { Routes, Route} from "react-router-dom";
 import { observer } from 'mobx-react';
 
 import { Header } from "./components/Header/index.jsx";
-import { Home, FullList, Registration, Login } from "./pages";
+import {  FullList, Registration, Login, Home } from "./pages";
 
 import isAuthme from "./store/isAuthMe.js";
-import allList from "./store/allList.js";
+import { HomePage } from "./pages/HomePage.jsx";
 
 
 const App = observer(()=> {
@@ -24,7 +24,7 @@ console.log('app');
       <Header />
       <Container maxWidth="lg">
         <Routes>
-          <Route path ='/' element = {<Home />} />
+          <Route path ='/' element = {<HomePage />} />
           <Route path ='/list/:id' element = {<FullList />} />
           <Route path ='/login' element = {<Login />} />
           <Route path ='/register' element = {<Registration />} />
