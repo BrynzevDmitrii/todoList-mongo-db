@@ -12,6 +12,7 @@ import register from '../../store/register';
 import isAuthme from '../../store/isAuthMe';
 
 import styles from './Header.module.scss';
+import allList from '../../store/allList';
 
 
 export const Header = observer(() => {
@@ -21,6 +22,7 @@ let isAuthHeader = Boolean(isAuthme.getDate())
    isAuthme.setLogoutMe()
    register.setLoguot();
    login.setLoguot();
+   allList.removeDate();
    window.localStorage.removeItem('token')
   };
 
@@ -36,8 +38,8 @@ let isAuthHeader = Boolean(isAuthme.getDate())
           <div className={styles.buttons}>
             {isAuthHeader ? (
               <>
-                <Link to ="/posts/create">
-                  <Button variant="contained">Написать статью</Button>
+                <Link to ="/profile/:id">
+                  <Button variant="contained">Личный кабинет</Button>
                 </Link>
                 <Link to ="/register">
                 <Button onClick={()=>onClickLogout()} variant="contained" color="error">

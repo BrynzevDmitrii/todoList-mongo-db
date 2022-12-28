@@ -1,21 +1,13 @@
 import Container from "@mui/material/Container";
-import { useEffect } from "react";
+
 import { Routes, Route} from "react-router-dom";
 
-import { observer } from 'mobx-react';
-
 import { Header } from "./components/Header/index.jsx";
-import {  FullList, Registration, Login, Home } from "./pages";
-
-import isAuthme from "./store/isAuthMe.js";
-import { HomePage } from "./pages/HomePage.jsx";
+import {  ProfileList, Registration, Login, Home} from "./pages";
 
 
-const App = observer(()=> {
 
-useEffect(()=>{
-    isAuthme.fetchAuthMe()
-  },[]);
+const App = ()=> {
 
 console.log('app');
 
@@ -24,14 +16,14 @@ console.log('app');
       <Header />
       <Container maxWidth="lg">
         <Routes>
-          <Route path ='/' element = {<HomePage />} />
-          <Route path ='/list/:id' element = {<FullList />} />
+          <Route path ='/' element = {<Home/>} />
+          <Route path ='/profile/:id' element = {<ProfileList />} />
           <Route path ='/login' element = {<Login />} />
           <Route path ='/register' element = {<Registration />} />
         </Routes>
       </Container>
     </>
   );
-})
+}
 
 export default App;
