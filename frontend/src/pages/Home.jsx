@@ -4,25 +4,22 @@ import Grid from "@mui/material/Grid";
 
 import { Button } from "@mui/material";
 import { AddList } from "./AddList";
-import allList from "../store/allList";
-import { observer } from "mobx-react";
 import { ListItems } from "../components/ListItems/ListItems";
 
 import isAuthMe from "../store/isAuthMe";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
-export const Home = observer(() => {
+export const Home = () => {
   const [addList, setAddList] = useState(false);
+  const [allLists, setAllLists] = useState([])
 
   useEffect(() => {
-    yut()
-    return allList.removeDate()
+    isAuthMe.fetchAuthMe()
+    axios('http://localhost:3001/lists').then((res)=>setAllLists(res.data))
   }, []);
 
 
-  const yut=()=>{
-     allList.fetchLists()
-}
  
   const createList = () => {
     setAddList(true);
@@ -48,19 +45,18 @@ export const Home = observer(() => {
           ></Tabs>
           <Grid container spacing={2}>
             <Grid xs={8} item>
-              {allList.data.length
-                ?
-                 allList.data.map((item) => (
+              {allLists.length ?
+                allLists.map((item, idx) => (
                     <ListItems
+                      key ={idx+item.id}
                       id={item.id}
                       title={item.title}
-                      items={item.items.map((i) => i.item)}
-                      isChecked = {item.items.map((i) => i.isChecked)}
-                    />
-                  )):'loading'}
+                      item={item.items}
+                    />))
+                  :'loading'}
             </Grid>
           </Grid>
       {addList && <AddList openPopup={createList} closedPopup={closedPopup} />}
     </>
   );
-});
+};
