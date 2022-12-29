@@ -10,7 +10,7 @@
         },
         {
           "item": "Молоко",
-          "isChecked": true
+          "isChecked": false
         },
         {
           "item": "Макароны",
@@ -22,7 +22,7 @@
         },
         {
           "item": "Кофе",
-          "isChecked": false
+          "isChecked": true
         }
       ],
       "authorId": 2
@@ -33,15 +33,15 @@
       "items": [
         {
           "item": "Молоток",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Гвозди",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Шпатель",
-          "isChecked": true
+          "isChecked": false
         },
         {
           "item": "Топор",
@@ -54,7 +54,7 @@
       ],
       "authorId": 2
     },
-    { 
+    {
       "id": 3,
       "title": "Запчасти для машины",
       "items": [
@@ -80,9 +80,7 @@
         }
       ],
       "authorId": 2
-      
     }
-
   ],
   "profile": [
     {
