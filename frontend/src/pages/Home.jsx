@@ -12,11 +12,11 @@ import axios from "axios";
 
 export const Home = () => {
   const [addList, setAddList] = useState(false);
-  const [allLists, setAllLists] = useState([])
+  // const [allLists, setAllLists] = useState([])
 
   useEffect(() => {
     isAuthMe.fetchAuthMe()
-    axios('http://localhost:3001/lists').then((res)=>setAllLists(res.data))
+    // axios('http://localhost:3001/lists').then((res)=>setAllLists(res.data))
   }, []);
 
 
@@ -45,7 +45,8 @@ export const Home = () => {
           ></Tabs>
           <Grid container spacing={2}>
             <Grid xs={8} item>
-              {allLists.length ?
+              <ListItems />
+              {/* {allLists.length ?
                 allLists.map((item, idx) => (
                     <ListItems
                       key ={idx+item.id}
@@ -53,7 +54,7 @@ export const Home = () => {
                       title={item.title}
                       item={item.items}
                     />))
-                  :'loading'}
+                  :'loading'} */}
             </Grid>
           </Grid>
       {addList && <AddList openPopup={createList} closedPopup={closedPopup} />}
