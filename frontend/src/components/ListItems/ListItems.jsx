@@ -1,37 +1,32 @@
-import React, { useRef } from "react";
-import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+import { Items } from "../Items/Item";
+
 import styles from "./ListItems.module.scss";
-import { Checkbox } from "@mui/material";
 
-export const ListItems = (props) => {
+export const ListItems = () => {
+  const [allLists, setAllLists] = useState([]);
+  const [reload, setReload] = useState()
 
-  const idRef = useRef();
+  useEffect(() => {
+    axios("http://localhost:3001/lists").then((res) => setAllLists(res.data));
+  },[reload]);
 
-const hendelChekced=(e)=>{
-console.log(idRef);
-}
-
+  const isCheck=(reloaded)=>{
+    setReload(reloaded)
+  }
 
   return (
-<>
-            {props.title}
-            <ul key={props.id + props.title} className={styles.df}>
-        {props.item.map((i,indx) => {
-          return (
-              <li key={props.id+indx}
-                ref ={idRef}
-                className={clsx(
-                  styles.item,
-                  i.isChecked && styles.underline
-                )}
-              >
-                <Checkbox checked = {i.isChecked} onClick = {(e)=>hendelChekced(e)}/>
-                &nbsp; {i.item}
-              </li>  
-          );
-        })}
+    <>
+      {allLists.map((i) => {
+        return (
+          <ul key={i.indx + i.title} className={styles.df} id={i.id}>
+            {i.title}
+            <Items items={i.items} isCheck={isCheck} />
           </ul>
-    
+        );
+      })}
     </>
   );
 };

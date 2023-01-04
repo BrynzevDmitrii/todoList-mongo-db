@@ -6,7 +6,7 @@
       "items": [
         {
           "item": "Хлеб",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Молоко",
@@ -18,11 +18,11 @@
         },
         {
           "item": "Печенье",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Кофе",
-          "isChecked": false
+          "isChecked": true
         }
       ],
       "authorId": 2
@@ -33,11 +33,11 @@
       "items": [
         {
           "item": "Молоток",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Гвозди",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Шпатель",
@@ -45,26 +45,26 @@
         },
         {
           "item": "Топор",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Перфоратор",
-          "isChecked": false
+          "isChecked": true
         }
       ],
       "authorId": 2
     },
-    { 
+    {
       "id": 3,
       "title": "Запчасти для машины",
       "items": [
         {
           "item": "ШРУС",
-          "isChecked": true
+          "isChecked": false
         },
         {
           "item": "Рулевая тяга",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Колодки",
@@ -72,17 +72,15 @@
         },
         {
           "item": "Молоток",
-          "isChecked": false
+          "isChecked": true
         },
         {
           "item": "Фильтры: масляный, бензиновый, воздушный",
-          "isChecked": false
+          "isChecked": true
         }
       ],
       "authorId": 2
-      
     }
-
   ],
   "profile": [
     {
