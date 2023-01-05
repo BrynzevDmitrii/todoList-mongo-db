@@ -25,8 +25,19 @@
     .df {
       display: flex;
       flex-direction: column;
-      border-bottom: 2px solid #e1dee4; 
+      border-bottom: 2px solid #567751; 
       align-items: self-start;
+      padding-bottom: 20px;
+    }
+
+    .title {
+      width: max-content;
+      height: max-content;
+      background-color: rgb(143, 168, 145);
+      font-size: 20px;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
     }
 
     .item {
