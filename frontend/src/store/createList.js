@@ -1,10 +1,15 @@
 import { makeAutoObservable, observable } from "mobx";
-import axios  from "../axios";
+// import axios  from "../axios";
 
 class createList{
     title = '' ;
-    items = [];
-    isChecket = false
+    items = [
+        {
+        item:'',
+        isChecked:false
+        },
+    ];
+    authorId = 2
 
 
     constructor(){
@@ -23,10 +28,10 @@ class createList{
         this.isChecket = inputChecket;
     }
 
-   async axiosCreateLists(){
-     axios.get('/todo')
-        .then(response =>this.setDate(response.data))    
-   }
+//    async axiosCreateLists(){
+//      axios.set('/todo')
+//         .then(response =>this.setDate(response.data))    
+//    }
 }
 
 export default observable( new createList());

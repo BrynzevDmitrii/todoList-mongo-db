@@ -8,29 +8,34 @@ import styles from "../ListItems/ListItems.module.scss";
 
 export const Items = (props) => {
   const [isFinished, setIsFinished] = useState(false);
+  const [count, setCaunt] = useState(1)
 
-  const idRef = useRef();
+  const idRef = useRef(null);
 
   const hendelChekced = async (e) => {
+
     const myHeaders = new Headers();
     const id = idRef.current.parentElement.id;
     const itemId = e.target.id;
 
-    const list = await (await axios.get(`http://localhost:3001/lists/${id} `))
-      .data;
+    const list = await (await axios.get(`http://localhost:3001/lists/${id} `)).data;
 
-    const snapShot = structuredClone(list);
-    setIsFinished(snapShot.items[itemId].isChecked);
-    snapShot.items[itemId].isChecked = !isFinished;
+    
+    setIsFinished(list.items[itemId].isChecked);
+    const snapList ={...list, ...list.items[itemId].isChecked = !isFinished}
 
     await axios.put(
       `http://localhost:3001/lists/${id} `,
-      snapShot,
+      snapList,
       myHeaders.set("Content-Type", "application/json; charset=utf-8")
     );
+   setCaunt(count+1)
 
-    props.isCheck(isFinished)
+  await props.isCheck(count)
+
   };
+
+
   return (
     <>
       {props.items.map((item, idx) => {

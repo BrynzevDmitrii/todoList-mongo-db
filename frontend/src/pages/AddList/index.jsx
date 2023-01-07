@@ -6,50 +6,21 @@ import { Modal, Box } from '@mui/material';
 
 import 'easymde/dist/easymde.min.css';
 import styles from './AddList.module.scss';
+import { Items } from './Items';
 
 export const AddList = ({openPopup, closedPopup}) => {
-  const imageUrl = '';
-  // const [value, setValue] = React.useState('');
-
-  const handleChangeFile = () => {};
-  const onClickRemoveImage = () => {};
-  // const onChange = React.useCallback((value) => {
-  //   setValue(value);
-  // }, []);
-
-
-
-  // const options = React.useMemo(
-  //   () => ({
-  //     spellChecker: false,
-  //     maxHeight: '400px',
-  //     autofocus: true,
-  //     placeholder: 'Введите текст...',
-  //     status: false,
-  //     autosave: {
-  //       enabled: true,
-  //       delay: 1000,
-  //     },
-  //   }),
-  //   [],
-  // );
+  
 
   return (
 <>
     
     <Modal
-  open={openPopup}
+  open={true}
 >
 <Box
       className={styles['moduleWindow']}
     >
     <Paper style={{ padding: 30 }}>
-      <input type="file" onChange={handleChangeFile} hidden />
-      {imageUrl && (
-        <Button variant="contained" color="error" onClick={onClickRemoveImage}>
-          Удалить
-        </Button>
-      )}
       <br />
       <br />
       <TextField
@@ -58,24 +29,9 @@ export const AddList = ({openPopup, closedPopup}) => {
         placeholder="Заголовок списка дел..."
         fullWidth
       />
-      <TextField classes={{ root: styles.tags }} variant="standard" placeholder="Мой новый список." fullWidth />
       <br />
       <br />
-      <TextField
-          id="filled-textarea"
-          label="Multiline Placeholder"
-          placeholder="Placeholder"
-          multiline
-          variant="filled"
-          fullWidth
-        />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      
+      <Items/>
       <div className={styles.buttons}>
         <Button size="large" variant="contained">
           Опубликовать

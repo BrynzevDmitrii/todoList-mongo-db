@@ -6,11 +6,11 @@
       "items": [
         {
           "item": "Хлеб",
-          "isChecked": true
+          "isChecked": false
         },
         {
           "item": "Молоко",
-          "isChecked": true
+          "isChecked": false
         },
         {
           "item": "Макароны",
@@ -64,15 +64,15 @@
         },
         {
           "item": "Рулевая тяга",
-          "isChecked": true
-        },
-        {
-          "item": "Колодки",
           "isChecked": false
         },
         {
-          "item": "Молоток",
+          "item": "Колодки",
           "isChecked": true
+        },
+        {
+          "item": "Молоток",
+          "isChecked": false
         },
         {
           "item": "Фильтры: масляный, бензиновый, воздушный",

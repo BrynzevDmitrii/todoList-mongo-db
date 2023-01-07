@@ -9,6 +9,7 @@ import { ListItems } from "../components/ListItems/ListItems";
 import isAuthMe from "../store/isAuthMe";
 import { Navigate } from "react-router-dom";
 
+
 export const Home = () => {
   const [addList, setAddList] = useState(false);
 
@@ -43,7 +44,8 @@ export const Home = () => {
           <ListItems />
         </Grid>
       </Grid>
-      {addList && <AddList openPopup={createList} closedPopup={closedPopup} />}
+      {addList && <AddList  closedPopup={closedPopup} />}
     </>
   );
 };
+
