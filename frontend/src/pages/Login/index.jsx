@@ -30,7 +30,9 @@ export const Login = observer(() => {
 
   if(login.dataLogin){
   const  token = login.dataLogin[0].token
-  window.localStorage.setItem('token', token)
+  const authorId = login.dataLogin[0].id
+  window.localStorage.setItem('token', token )
+  window.localStorage.setItem('authorId', authorId )
   }
   
   
