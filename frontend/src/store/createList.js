@@ -1,15 +1,10 @@
 import { makeAutoObservable, observable } from "mobx";
-// import axios  from "../axios";
+import axios  from "../axios";
 
 class createList{
-    title = '' ;
-    items = [
-        {
-        item:'',
-        isChecked:false
-        },
-    ];
-    authorId = 2
+    title = '';
+    items = [];
+    authorId;
 
 
     constructor(){
@@ -20,18 +15,37 @@ class createList{
         this.title = inputTitle;
     }
 
-    setItems(inputItems) {
-        this.items.push(inputItems);
+   async setItems(inputItems) {
+    await inputItems.forEach(element => {
+        this.items.push(element)
+        
+    });
     }
 
-    setIsChecket(inputChecket) {
-        this.isChecket = inputChecket;
+    setAuthorId(Id) {
+        this.authorId = Number(Id);
     }
 
-//    async axiosCreateLists(){
-//      axios.set('/todo')
-//         .then(response =>this.setDate(response.data))    
-//    }
+   async setCreateLists(){
+    try {
+        const myHeaders = new Headers();
+
+        await axios.post(
+            'http://localhost:3001/lists',{
+                    "title" : this.title,
+                    "items": this.items,
+                    "authorId" : this.authorId,
+                },
+                myHeaders.set("Content-Type", "application/json; charset=utf-8"),
+            )
+            this.title='';
+            this.items=[];
+        
+    } catch (error) {
+        console.log(error);
+    }
+   
+}
 }
 
 export default observable( new createList());
