@@ -9,6 +9,7 @@ import "easymde/dist/easymde.min.css";
 import styles from "./AddList.module.scss";
 import { Items } from "./Items";
 import createList from "../../store/createList";
+import allList from "../../store/allList";
 
 export const AddList = observer(({ closedPopup }) => {
   const handelOnChange = (e) => {
@@ -24,8 +25,9 @@ export const AddList = observer(({ closedPopup }) => {
     }
     await createList.setAuthorId(window.localStorage.getItem('authorId'))
     createList.setCreateLists()
-   
+    allList.getDate()
     closedPopup()
+    
   }
 
   return (
