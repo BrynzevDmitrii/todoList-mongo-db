@@ -15,8 +15,8 @@ class createList{
         this.title = inputTitle;
     }
 
-   async setItems(inputItems) {
-    await inputItems.forEach(element => {
+    setItems(inputItems) {
+     inputItems.forEach(element => {
         this.items.push(element)
         
     });
