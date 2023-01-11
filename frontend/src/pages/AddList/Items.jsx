@@ -2,25 +2,20 @@ import TextField from '@mui/material/TextField';
 
 
 import { observer } from 'mobx-react';
-import { useState } from 'react';
 import createList from '../../store/createList';
 
 export const Items = observer(() =>{
-    const[listItems, setListItems] = useState([])
 
-    const hendelKeyPress=(e)=>{
+    const hendelKeyPress=async(e)=>{
         if(e.key ==='Enter'){
           e.preventDefault()
-            setListItems([...listItems, {item:e.target.value, isChecked:false}]);
-            createList.setItems(listItems)
+            createList.setItems([{item:e.target.value, isChecked:false}])
             e.target.value = ''
             
         }
         
     }
 
-    
-console.log(listItems);
     return(
         <>
         <TextField
@@ -34,8 +29,8 @@ console.log(listItems);
       <br />
       <ul>
         {
-        listItems.length?
-        listItems.map((item, ind)=>{
+        createList.items.length?
+        createList.items.map((item, ind)=>{
           return(
             <li key={ind}>
               {item.item}
