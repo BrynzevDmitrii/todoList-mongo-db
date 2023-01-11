@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { observer } from "mobx-react";
 
 import { Items } from "../Items/Item";
 
 import styles from "./ListItems.module.scss";
 import { PostSkeleton } from "../RemvUpgrd/Skeleton";
 
-export const ListItems = () => {
+
+export const ListItems = observer(() => {
   const [allLists, setAllLists] = useState([]);
-  const [reload, setReload] = useState(0)
+  const [reload, setReload] = useState(0);
+
 
   useEffect(() => {
     axios("http://localhost:3001/lists").then((res) => setAllLists(res.data));
-  },[reload]);
+  },[reload,allLists]);
 
   const isCheck=(reloaded)=>{
     setReload(reloaded)
@@ -41,4 +44,4 @@ export const ListItems = () => {
       }
     </>
   );
-};
+});

@@ -8,11 +8,17 @@ class allList{
         makeAutoObservable(this)
     }
 
+   
+
    async setDate(response) {
       response.forEach(element => {
             this.data.push(element)
-            console.log(this.data);
         });
+    }
+
+    async getDate(){
+        let spike = await (await axios('http://localhost:3001/lists')).data;
+            this.setDate(spike)
     }
 
     removeDate(){
