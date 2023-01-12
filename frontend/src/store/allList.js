@@ -10,16 +10,20 @@ class allList{
 
    
 
-   async setDate(response) {
-      response.forEach(element => {
-            this.data.push(element)
+    setDate(response) {
+    console.log(this.data);
+    let simpl = []
+       response.forEach(element => {
+            simpl.push(element)
         });
+        if(JSON.stringify(simpl) !== JSON.stringify(this.data)){
+           this.data = simpl;
+        }
+        
+        console.log(simpl);
+        console.log(this.data);
     }
 
-    async getDate(){
-        let spike = await (await axios('http://localhost:3001/lists')).data;
-            this.setDate(spike)
-    }
 
     removeDate(){
         this.data = []
@@ -27,16 +31,11 @@ class allList{
 
    async fetchLists(){
      
-    try {
-        await axios.get('/todo')
-        .then(response =>this.setDate(response.data))    
-        console.log(this.data);
-    } catch (error) {
         const result = await (await axios('http://localhost:3001/lists')).data
         this.setDate(result)
-        console.log(error);
-    }
    }
+    
+   
 }
 
 export default observable( new allList());

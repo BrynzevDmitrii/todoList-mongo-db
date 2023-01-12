@@ -25,7 +25,7 @@ export const AddList = observer(({ closedPopup }) => {
     }
     await createList.setAuthorId(window.localStorage.getItem('authorId'))
     createList.setCreateLists()
-    allList.getDate()
+    allList.fetchLists()
     closedPopup()
     
   }

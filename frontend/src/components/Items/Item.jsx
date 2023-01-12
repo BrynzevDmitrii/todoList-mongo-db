@@ -5,6 +5,7 @@ import axios from "axios";
 import { Checkbox } from "@mui/material";
 
 import styles from "../ListItems/ListItems.module.scss";
+import allList from "../../store/allList";
 
 export const Items = (props) => {
   const [isFinished, setIsFinished] = useState(false);
@@ -31,7 +32,8 @@ export const Items = (props) => {
     );
    setCaunt(count+1)
 
-  await props.isCheck(count)
+   await props.isCheck(count)
+  allList.fetchLists()
 
   };
 
