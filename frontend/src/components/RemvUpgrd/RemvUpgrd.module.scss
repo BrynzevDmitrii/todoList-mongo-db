@@ -1,11 +1,14 @@
 $blue: #4361ee;
 
 .root {
-  background-color: #fff;
+  background-color: transparent;
   overflow: hidden;
-  height: 40px;
+  width: 500px;
+  height: 246px;
+  top: 0;
+  right:-10vmin;
   margin-bottom: 15px;
-  position: relative;
+  position: absolute;
 
   &:hover {
     .editButtons {

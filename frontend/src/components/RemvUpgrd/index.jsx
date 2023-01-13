@@ -5,7 +5,6 @@ import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 
 import styles from './RemvUpgrd.module.scss';
-// import { PostSkeleton } from './Skeleton';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
