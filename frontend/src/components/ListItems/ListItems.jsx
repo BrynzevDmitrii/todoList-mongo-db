@@ -7,11 +7,14 @@ import styles from "./ListItems.module.scss";
 import { PostSkeleton } from "../RemvUpgrd/Skeleton";
 import { RemvUpgrd } from "../RemvUpgrd";
 import allList from "../../store/allList";
+import { remove } from "../../midlware/remove";
+import { CastomAlert } from "../castomAlert/CastomAlert";
+
 
 
 export const ListItems = observer(() => {
   const [reload, setReload] = useState(0);
-  const [hover, setHover ] = useState(false)
+  const [alert, setAlert ]= useState(false);
 
 
   useEffect(() => {
@@ -22,27 +25,33 @@ export const ListItems = observer(() => {
     setReload(reloaded)
   }
 
-  const hendlerOver=()=>{
-    setHover(true)
-  }
-
-  const handlerOut=()=>{
-    setHover(false)
+  const removeList = async (id) => {
+    setAlert(true)
+     
+    //  await remove(id)
   }
 
   return (
     <>
       {allList.data.length ? 
+      
       allList.data.map((i,indx) => {
         return (
-          <ul key={i.indx + i.title} className={styles.df} id={i.id} onMouseOver={()=>hendlerOver()}
-          onMouseOut={()=>handlerOut()}>
+          <ul key={i.indx + i.title} className={styles.df} id={i.id}>
             <h3 className={styles.title}>{i.title}</h3>
             <Items items={i.items} isCheck={isCheck} />
             <div className={styles.edidSection}>
-            <RemvUpgrd isEditable = {true} key={indx}/>
+            <CastomAlert open={alert} />
+            <RemvUpgrd
+            isEditable = {true} 
+            key={indx}  
+            id={i.id}
+            onClickRemove={removeList}
+            />          
             </div>
+    
           </ul>
+          
         );
       })
       :
