@@ -7,42 +7,35 @@ import EditIcon from '@mui/icons-material/Edit';
 import styles from './RemvUpgrd.module.scss';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import { CastomAlert } from '../castomAlert/CastomAlert';
 
 
 export const RemvUpgrd = observer(({
-  _id,
-  title,
-  createdAt,
-  imageUrl,
-  user,
-  viewsCount,
-  commentsCount,
-  tags,
-  children,
+  id,
   isFullPost,
-  isLoading,
   isEditable,
-  PropStyles
+  onClickRemove
   
 }) => {
 
 
  
 
-  const onClickRemove = () => {};
+  // const onClickRemove = () => {};
 
   return (
-    <div className={clsx(styles.root, { [styles.rootFull]: isFullPost }, PropStyles)}>
+    <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (
         <div className={styles.editButtons}>
-          <Link to={`/todo/${_id}/edit`}>
+          <Link to={`/todo/${id}/edit`}>
             <IconButton color="primary">
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton  onClick={onClickRemove} color="secondary">
+          <IconButton  onClick={(e)=>onClickRemove(e,id)} color="secondary">
             <DeleteIcon />
           </IconButton>
+          
         </div>
       )}
 
