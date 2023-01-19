@@ -7,8 +7,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import styles from './RemvUpgrd.module.scss';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { CastomAlert } from '../castomAlert/CastomAlert';
-
 
 export const RemvUpgrd = observer(({
   id,
@@ -17,11 +15,6 @@ export const RemvUpgrd = observer(({
   onClickRemove
   
 }) => {
-
-
- 
-
-  // const onClickRemove = () => {};
 
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
@@ -32,14 +25,12 @@ export const RemvUpgrd = observer(({
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton  onClick={(e)=>onClickRemove(e,id)} color="secondary">
+          <IconButton  onClick={()=>onClickRemove(id)} color="secondary">
             <DeleteIcon />
           </IconButton>
           
         </div>
       )}
-
-   
     </div>
   );
 });

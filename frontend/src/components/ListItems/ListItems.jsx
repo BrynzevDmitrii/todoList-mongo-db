@@ -15,21 +15,50 @@ import { CastomAlert } from "../castomAlert/CastomAlert";
 export const ListItems = observer(() => {
   const [reload, setReload] = useState(0);
   const [alert, setAlert ]= useState(false);
+  const [delited, setDelited]= useState(false);
 
 
   useEffect(() => {
     allList.fetchLists()
-  },[reload]);
+  },[reload, delited]);
+
+
 
   const isCheck=(reloaded)=>{
     setReload(reloaded)
   }
 
-  const removeList = async (id) => {
+  const openAlert=()=> {
     setAlert(true)
-     
-    //  await remove(id)
   }
+ 
+
+  const onClosed = ()=> {
+    setAlert(false)
+  }
+
+  const handleDelited=async(id)=>{
+    console.log(id);
+    setDelited(true)
+    await remove(id)
+    
+  }
+ 
+  const removeList = (id) => {
+    openAlert()
+    handleDelited(id)
+
+    
+    // if(delited){
+    //     await remove(id)
+    //     onClosed()
+    // }
+    
+    
+  }
+ 
+
+ 
 
   return (
     <>
@@ -41,7 +70,7 @@ export const ListItems = observer(() => {
             <h3 className={styles.title}>{i.title}</h3>
             <Items items={i.items} isCheck={isCheck} />
             <div className={styles.edidSection}>
-            <CastomAlert open={alert} />
+            <CastomAlert open={alert} onClosed = {onClosed} handleDelited={handleDelited} />
             <RemvUpgrd
             isEditable = {true} 
             key={indx}  
