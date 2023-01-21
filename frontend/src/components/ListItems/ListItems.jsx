@@ -7,92 +7,41 @@ import styles from "./ListItems.module.scss";
 import { PostSkeleton } from "../RemvUpgrd/Skeleton";
 import { RemvUpgrd } from "../RemvUpgrd";
 import allList from "../../store/allList";
-import { remove } from "../../midlware/remove";
-import { CastomAlert } from "../castomAlert/CastomAlert";
-
-
+import popupRemove from "../../store/popupRemove";
 
 export const ListItems = observer(() => {
   const [reload, setReload] = useState(0);
-  const [alert, setAlert ]= useState(false);
-  const [delited, setDelited]= useState(false);
-
+  const alert = popupRemove.isOpen;
 
   useEffect(() => {
-    allList.fetchLists()
-  },[reload, delited]);
+    allList.fetchLists();
+  }, [reload, alert]);
 
-
-
-  const isCheck=(reloaded)=>{
-    setReload(reloaded)
-  }
-
-  const openAlert=()=> {
-    setAlert(true)
-  }
- 
-
-  const onClosed = ()=> {
-    setAlert(false)
-  }
-
-  const handleDelited=async(id)=>{
-    console.log(id);
-    setDelited(true)
-    await remove(id)
-    
-  }
- 
-  const removeList = (id) => {
-    openAlert()
-    handleDelited(id)
-
-    
-    // if(delited){
-    //     await remove(id)
-    //     onClosed()
-    // }
-    
-    
-  }
- 
-
- 
-
+  const isCheck = (reloaded) => {
+    setReload(reloaded);
+  };
   return (
     <>
-      {allList.data.length ? 
-      
-      allList.data.map((i,indx) => {
-        return (
-          <ul key={i.indx + i.title} className={styles.df} id={i.id}>
-            <h3 className={styles.title}>{i.title}</h3>
-            <Items items={i.items} isCheck={isCheck} />
-            <div className={styles.edidSection}>
-            <CastomAlert open={alert} onClosed = {onClosed} handleDelited={handleDelited} />
-            <RemvUpgrd
-            isEditable = {true} 
-            key={indx}  
-            id={i.id}
-            onClickRemove={removeList}
-            />          
-            </div>
-    
-          </ul>
-          
-        );
-      })
-      :
-      <>
-      <PostSkeleton />
-      <PostSkeleton />
-      <PostSkeleton />
-      <PostSkeleton />
-      </>
-      
-      
-      }
+      {allList.data.length ? (
+        allList.data.map((i, indx) => {
+          return (
+            <ul key={i.indx + i.title} className={styles.df} id={i.id}>
+              <h3 className={styles.title}>{i.title}</h3>
+              <Items items={i.items} isCheck={isCheck} />
+              <div className={styles.edidSection}>
+                <RemvUpgrd isEditable={true} key={indx} id={i.id} />
+              </div>
+            </ul>
+          );
+        })
+      ) : (
+        <>
+          <PostSkeleton />
+          <PostSkeleton />
+          <PostSkeleton />
+          <PostSkeleton />
+        </>
+      )}
     </>
   );
 });
