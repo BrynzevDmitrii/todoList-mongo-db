@@ -7,13 +7,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import styles from './RemvUpgrd.module.scss';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import popupRemove from '../../store/popupRemove';
+import { CastomAlert } from '../castomAlert/CastomAlert';
 
 export const RemvUpgrd = observer(({
   id,
   isFullPost,
   isEditable,
-  onClickRemove
-  
 }) => {
 
   return (
@@ -25,9 +25,12 @@ export const RemvUpgrd = observer(({
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton  onClick={()=>onClickRemove(id)} color="secondary">
-            <DeleteIcon />
+          <IconButton  onClick={()=>popupRemove.setOpen()} color="secondary">
+            <DeleteIcon onClick={()=>popupRemove.setId(id)}/>
           </IconButton>
+          <CastomAlert
+            open={popupRemove.isOpen}  
+             />
           
         </div>
       )}
